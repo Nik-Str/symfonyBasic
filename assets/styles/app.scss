@@ -12,33 +12,36 @@ body {
 }
 
 main {
-  min-height: 95vh;
+  min-height: calc(100vh - 5rem);
 }
 
 // ---------------------------------------------------Header
 header {
-  color: white;
-
-  .container-fluid {
-    .navbar-brand img {
-      height: auto;
-      max-width: 11rem;
-    }
-  }
-
-  .collapse ul li a {
-    font-size: 0.9rem;
+  .navbar {
+    height: 5rem;
     color: white;
-  }
 
-  .bi {
-    font-size: 1.2rem;
-  }
+    .container-fluid {
+      .navbar-brand img {
+        height: auto;
+        max-width: 11rem;
+      }
+    }
 
-  .navbar-toggler {
-    border: none;
-    span {
+    .collapse ul li a {
+      font-size: 0.9rem;
       color: white;
+    }
+
+    .bi {
+      font-size: 1.2rem;
+    }
+
+    .navbar-toggler {
+      border: none;
+      span {
+        color: white;
+      }
     }
   }
 }
@@ -53,6 +56,10 @@ footer {
     text-decoration: none;
   }
 
+  h5 {
+    font-size: 1.1rem;
+  }
+
   .container {
     .copyright {
       font-size: 0.7rem;
@@ -63,12 +70,12 @@ footer {
 
 // ---------------------------------------------------Hover links
 .links {
-  transition: $transition;
+  transition: $transition !important;
 }
 
 .links:hover {
   cursor: pointer;
-  color: grey;
+  color: grey !important;
 }
 
 // ---------------------------------------------------Scrollbar

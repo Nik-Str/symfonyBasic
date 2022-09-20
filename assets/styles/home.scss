@@ -1,0 +1,39 @@
+.homeContainer {
+  background-image: url('../images/Home.webp');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: auto;
+  height: calc(100vh - 5rem);
+}
+
+.overlayer {
+  background-color: rgba(60, 48, 24, 0.59);
+  height: 100%;
+  width: 100%;
+}
+
+.homeContent {
+  max-width: 35rem;
+  text-align: center;
+  color: white;
+  padding: 0 2rem 10rem 2rem;
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+
+  .btn {
+    color: white;
+    border-color: white;
+  }
+
+  .btn:hover {
+    background-color: rgba(255, 255, 255, 0.301);
+    border-color: white;
+  }
+}

@@ -1,5 +1,23 @@
 {% extends 'base.html.twig' %}
 
+{% block css %}
+	<link rel="stylesheet" href={{ asset('build/styles/home.css') }}>
+{% endblock %}
+
 {% block body %}
-	<h1>Home</h1>
+	<div class="container-fluid p-0 homeContainer">
+		<div class="overlayer">
+			<div class="d-flex h-100 align-items-center justify-content-center">
+				<div class="homeContent">
+					<h1>ALL ABOUT SKATEBOARD</h1>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
+					</p>
+					<a href="/products/male">
+						<button type="button" class="btn btn-outline-secondary rounded-pill">SHOP NOW</button>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}
