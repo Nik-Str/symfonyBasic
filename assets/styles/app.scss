@@ -1,14 +1,90 @@
-// customize some Bootstrap variables
-$primary: darken(#428bca, 20%);
-
 // the ~ allows you to reference things in node_modules
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+$transition: 0.8s;
 
 body {
-  background-color: lightgray;
+  background-color: white;
+  color: black;
+  line-height: 1.4;
+  font-family: 'Roboto', sans-serif;
 }
 
-li {
-  font-size: 30px;
-  color: green;
+main {
+  min-height: 95vh;
+}
+
+// ---------------------------------------------------Header
+header {
+  color: white;
+
+  .container-fluid {
+    .navbar-brand img {
+      height: auto;
+      max-width: 11rem;
+    }
+  }
+
+  .collapse ul li a {
+    font-size: 0.9rem;
+    color: white;
+  }
+
+  .bi {
+    font-size: 1.2rem;
+  }
+
+  .navbar-toggler {
+    border: none;
+    span {
+      color: white;
+    }
+  }
+}
+
+// ---------------------------------------------------Footer
+footer {
+  min-height: 18vh;
+  color: white;
+
+  a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+  }
+
+  .container {
+    .copyright {
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+}
+
+// ---------------------------------------------------Hover links
+.links {
+  transition: $transition;
+}
+
+.links:hover {
+  cursor: pointer;
+  color: grey;
+}
+
+// ---------------------------------------------------Scrollbar
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #212529;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: gray;
 }
