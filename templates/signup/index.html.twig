@@ -8,17 +8,12 @@
 	<div class="container-fluid p-0 authContainer">
 		<div class="p-4 authContent">
 			<h1 class="text-center">Signup</h1>
-			<form data-controller="signup" data-action="signup#greet:prevent">
-				<div class="mb-3">
-					<label for="Email1" lass="form-label">Email address</label>
-					<input type="email" class="form-control" id="Email1" required>
-				</div>
-				<div class="mb-3">
-					<label for="Password" class="form-label">Password</label>
-					<input type="password" class="form-control" id="Password" required>
-				</div>
-				<button type="submit" class="btn btn-dark w-100">Submit</button>
-			</form>
+			{{ component('authForm', {
+				controller: "signup",
+				action: "greet:prevent",
+				email: "email",
+				password: "password"
+			}) }}
 		</div>
 	</div>
 {% endblock %}
