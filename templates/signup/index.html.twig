@@ -10,9 +10,11 @@
 			<h1 class="text-center">Signup</h1>
 			{{ component('authForm', {
 				controller: "signup",
-				action: "greet:prevent",
+				formAction: "auth:prevent",
+				inputAction: "reset",
 				email: "email",
-				password: "password"
+				password: "password",
+				emailFeedback: "emailFeedback"
 			}) }}
 		</div>
 	</div>

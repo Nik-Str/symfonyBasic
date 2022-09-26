@@ -8,7 +8,9 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 class AuthFormComponent
 {
   public $controller;
-  public $action;
+  public $formAction;
+  public $inputAction;
   public $email;
   public $password;
+  public $emailFeedback;
 }

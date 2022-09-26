@@ -1,11 +1,17 @@
-<form {{ stimulus_controller( controller) }} {{ stimulus_action(controller, action) }}>
+<form {{ stimulus_controller(controller) }} {{ stimulus_action(controller, formAction) }}>
 	<div class="mb-3">
 		<label for="Email1" lass="form-label">Email address</label>
-		<input type="email" class="form-control" id="Email1" required {{ stimulus_target( controller, email) }}>
+		<input type="email" class="form-control" id="Email1" required {{ stimulus_target(controller, email) }} {{ stimulus_action(controller, inputAction) }}>
+		<div class="invalid-feedback d-none" {{ stimulus_target(controller, emailFeedback) }}></div>
 	</div>
 	<div class="mb-3">
 		<label for="Password" class="form-label">Password</label>
-		<input type="password" class="form-control" id="Password" required {{ stimulus_target( controller, password) }}>
+		<input type="password" class="form-control" id="Password" required {{ stimulus_target(controller, password) }}>
 	</div>
 	<button type="submit" class="btn btn-dark w-100">Submit</button>
+	{{ component('toast', {
+		controller: "signup",
+		toast: "toast",
+		body: "toastBody"
+	}) }}
 </form>

@@ -19,6 +19,9 @@ class User
     #[ORM\Column(length: 255)]
     private ?string $password = null;
 
+    #[ORM\Column(length: 128)]
+    private ?string $auth = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +47,18 @@ class User
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function getAuth(): ?string
+    {
+        return $this->auth;
+    }
+
+    public function setAuth(string $auth): self
+    {
+        $this->auth = $auth;
 
         return $this;
     }
