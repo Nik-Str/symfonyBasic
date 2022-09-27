@@ -7,17 +7,17 @@
 {% block body %}
 	<div class="container-fluid p-0 authContainer">
 		<div class="p-4 authContent">
-			<h1 class="text-center">Signup</h1>
+			<h1 class="text-center">Login</h1>
 			{{ component('authForm', {
-				controller: "signup",
+				controller: "login",
 				formAction: "auth:prevent",
 				inputAction: "reset",
 				email: "email",
 				password: "password",
 				emailFeedback: "emailFeedback",
+				passwordFeedback: "passwordFeedback",
 				loading: "loading",
 				btn: "btn",
-				emailParam: "data-signup-type-param=email",
 			}) }}
 		</div>
 	</div>

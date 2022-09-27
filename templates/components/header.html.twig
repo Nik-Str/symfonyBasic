@@ -9,18 +9,25 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item">
-						<a class="nav-link links" href="/login">LOGIN</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link links" href="/signup">SIGNUP</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link links" href="/products/male">MALE</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link links" href="/products/female">FEMALE</a>
-					</li>
+					{% if isLoggedIn == false %}
+						<li class="nav-item">
+							<a class="nav-link links" href="/login">LOGIN</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link links" href="/signup">SIGNUP</a>
+						</li>
+					{% endif %}
+					{% if isLoggedIn == true %}
+						<li class="nav-item">
+							<a class="nav-link links" href="/products/male">MALE</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link links" href="/products/female">FEMALE</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link links" href="/api/logout">LOGOUT</a>
+						</li>
+					{% endif %}
 				</ul>
 				<div class="d-flex">
 					<i class="bi bi-search me-3 links"></i>

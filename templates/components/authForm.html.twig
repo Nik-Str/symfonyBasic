@@ -1,16 +1,25 @@
 <form {{ stimulus_controller(controller) }} {{ stimulus_action(controller, formAction) }}>
 	<div class="mb-3">
 		<label for="Email1" lass="form-label">Email address</label>
-		<input type="email" class="form-control" id="Email1" required {{ stimulus_target(controller, email) }} {{ stimulus_action(controller, inputAction) }}>
+		<input type="email"
+		class="form-control"
+		id="Email1"
+		required
+		{{ stimulus_target(controller, email) }}
+		{{ emailParam }} {{ stimulus_action(controller, inputAction) }}>
 		<div class="invalid-feedback d-none" {{ stimulus_target(controller, emailFeedback) }}></div>
 	</div>
 	<div class="mb-3">
 		<label for="Password" class="form-label">Password</label>
-		<input type="password" class="form-control" id="Password" required {{ stimulus_target(controller, password) }}>
+		<input type="password" class="form-control" id="Password" required {{ stimulus_target(controller, password) }} {{ passwordParam }} {{ stimulus_action(controller, inputAction) }}>
+		<div class="invalid-feedback d-none" {{ stimulus_target(controller, passwordFeedback) }}></div>
 	</div>
-	<button type="submit" class="btn btn-dark w-100">Submit</button>
+	<button type="submit" class="btn btn-dark w-100" {{ stimulus_target(controller, btn) }}>
+		<span {{ stimulus_target(controller, loading) }} class="spinner-border spinner-border-sm d-none"></span>
+		Signup
+	</button>
 	{{ component('toast', {
-		controller: "signup",
+		controller: controller,
 		toast: "toast",
 		body: "toastBody"
 	}) }}

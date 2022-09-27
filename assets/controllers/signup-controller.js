@@ -2,10 +2,13 @@ import { Controller } from '@hotwired/stimulus';
 import { Toast } from 'bootstrap';
 
 export default class extends Controller {
-  static targets = ['email', 'password', 'emailFeedback', 'toast', 'toastBody'];
+  static targets = ['email', 'password', 'emailFeedback', 'toast', 'toastBody', 'loading', 'btn'];
 
   async auth() {
     try {
+      this.btnTarget.disabled = true;
+      this.loadingTarget.classList.remove('d-none');
+
       const response = await fetch(`${process.env.BASE_URL}/api/signup`, {
         method: 'POST',
         body: JSON.stringify({ email: this.emailTarget.value, password: this.passwordTarget.value }),
@@ -33,13 +36,18 @@ export default class extends Controller {
     } catch (err) {
       console.error(err);
       this.displayError(err.message);
+    } finally {
+      this.btnTarget.disabled = false;
+      this.loadingTarget.classList.add('d-none');
     }
   }
 
-  reset() {
-    this.emailFeedbackTarget.classList.add('d-none');
-    this.emailFeedbackTarget.innerHTML = '';
-    this.emailTarget.classList.remove('is-invalid');
+  reset({ params }) {
+    if (params.type === 'email') {
+      this.emailFeedbackTarget.classList.add('d-none');
+      this.emailFeedbackTarget.innerHTML = '';
+      this.emailTarget.classList.remove('is-invalid');
+    }
   }
 
   displayError(msg) {

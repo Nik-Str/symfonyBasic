@@ -13,4 +13,9 @@ class AuthFormComponent
   public $email;
   public $password;
   public $emailFeedback;
+  public $passwordFeedback = null;
+  public $loading;
+  public $btn;
+  public $emailParam = null;
+  public $passwordParam = null;
 }
