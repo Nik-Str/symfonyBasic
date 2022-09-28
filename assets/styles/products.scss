@@ -1,0 +1,45 @@
+.productsContainer {
+  a {
+    text-decoration: none;
+    color: black !important;
+
+    .card {
+      max-width: 16rem;
+
+      h5 {
+        font-size: 1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      p {
+        color: rgba(39, 39, 39, 0.567);
+      }
+
+      img {
+        transition: 0.8s;
+        max-width: 16rem;
+        height: auto;
+      }
+    }
+
+    .card:hover {
+      cursor: pointer;
+
+      img {
+        filter: opacity(60%);
+      }
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      color: rgba(39, 39, 39, 0.567);
+    }
+  }
+
+  nav {
+    display: flex !important;
+    justify-content: center !important;
+  }
+}

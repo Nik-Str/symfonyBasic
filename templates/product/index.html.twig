@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+	<link rel="stylesheet" href={{ asset('build/styles/product.css') }}>
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid productContainer">
+
+		<div class="row">
+			<div class="col-12 col-xl-6 d-flex justify-content-center justify-content-xl-end">
+				<div>
+					{{ component('breadcrumb', {
+            links: links,
+            active: product.title
+            })
+          }}
+					<img src={{ product.image }} alt={{ product.title }}>
+				</div>
+			</div>
+			<div class="col-12 col-xl-6 d-flex justify-content-center justify-content-xl-start">
+				<div>
+					<h2>{{ product.brand }}</h2>
+					<h1>{{ product.title }}</h1>
+					<h3>{{ product.price }}kr</h3>
+					<div class="d-flex align-items-center pb-3">
+						<p class="p-0 m-0 pe-1">Color:</p>
+						<span style="background-color:{{product.color}};" class="productColorDiv"></span>
+					</div>
+					<h4>Description</h4>
+					<p class="productDescription">{{ product.description }}</p>
+					<a href="/api/addtocart/{{product.id}}" class="btn btn-dark">ADD TO CART</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+{% endblock %}

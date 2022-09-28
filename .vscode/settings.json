@@ -1,5 +1,8 @@
 {
   "editor.tabSize": 2,
   "editor.fontLigatures": false,
-  "emmet.includeLanguages": { "twig": "html" }
+  "emmet.includeLanguages": {
+    "twig": "html"
+  },
+  "editor.formatOnSave": true
 }

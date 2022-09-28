@@ -29,25 +29,21 @@ class ProductsController extends AbstractController
 	#[Route('/products/{sex}', name: 'app_products')]
 	public function index($sex, Session $session): Response | RedirectResponse | JsonResponse
 	{
-		function redirectResponse()
-		{
-			$response = new RedirectResponse($_ENV['BASE_URL'] . '/login');
-			$response->send();
-		}
-
 		try {
-			if (!isset($_COOKIE['symfonyBasic'])) return redirectResponse();
+			if (!isset($_COOKIE['symfonyBasic'])) return $session->redirectResponse();
 
 			$userSession = $session->validate($_COOKIE['symfonyBasic']);
+
 			$userExist = $this->userRepository->findOneBy(['auth' => $userSession['user_id']]);
 
-			if (!$userExist) return redirectResponse();
+			if (!$userExist) return $session->redirectResponse();
 
 			$products = $this->productRepository->findAll();
 
 			return $this->render('products/index.html.twig', [
 				'products' => $products,
-				'sex' => $sex
+				'sex' => $sex,
+				'links' => [['name' => 'Home', 'href' => '/']]
 			]);
 		} catch (\Throwable $err) {
 			$response = new JsonResponse();

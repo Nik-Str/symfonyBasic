@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 $transition: 0.8s;
+$colorSecondary: rgba(39, 39, 39, 0.567);
 
 body {
   background-color: white;
@@ -42,6 +43,10 @@ header {
       span {
         color: white;
       }
+    }
+
+    .cartCounter {
+      font-size: 0.8rem;
     }
   }
 }
