@@ -26,14 +26,14 @@ class AddToCartController extends AbstractController
 
       $existInCart = false;
       for ($i = 0; $i < count($cartItems); $i++) {
-        $article_id = $cartItems[$i]['article_id'];
+        $article_id = $cartItems[$i]['id'];
 
         if ($article_id === $id) {
           $cartItems[$i]['amount'] = ++$cartItems[$i]['amount'];
           $existInCart = true;
         }
       }
-      if (!$existInCart) array_push($cartItems, ['article_id' => $id, 'amount' => 1]);
+      if (!$existInCart) array_push($cartItems, ['id' => $id, 'amount' => 1]);
 
       $response->headers->setCookie(Cookie::create('symfonyCart')->withValue(json_encode($cartItems))->withExpires($expiration));
 

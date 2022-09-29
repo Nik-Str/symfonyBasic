@@ -39,8 +39,6 @@ class ProductController extends AbstractController
 
       $product = $this->productRepository->find($id);
 
-
-
       return $this->render('product/index.html.twig', [
         'product' => $product,
         'links' => [['name' => 'Home', 'href' => '/'], ['name' => 'Products', 'href' => '/products/male']]

@@ -100,3 +100,47 @@ footer {
 ::-webkit-scrollbar-thumb:hover {
   background: gray;
 }
+
+// ---------------------------------------------------Cart
+.cartItem {
+  border-bottom: 1px solid black;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+
+  .cartItemInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  img {
+    transition: 0.8s;
+    max-width: 4rem;
+    height: auto;
+    margin-right: 1rem;
+  }
+
+  img:hover {
+    cursor: pointer;
+    filter: opacity(60%);
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+    color: grey;
+  }
+
+  i {
+    transition: 0.8s;
+  }
+
+  i:hover {
+    cursor: pointer;
+    color: grey;
+  }
+}
