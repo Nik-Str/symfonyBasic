@@ -17,11 +17,13 @@ class CartComponent
   public $productsRepository;
   public $selectedId;
   public $isShowing = "";
+  public $total = 0;
 
   public function __construct(ProductsRepository $productsRepository)
   {
     $this->productsRepository = $productsRepository;
     $this->getCart();
+    $this->getTotal();
   }
 
   public function getCart()
@@ -50,10 +52,30 @@ class CartComponent
     $this->selectedId = $id;
     $this->cartItems = array_map("self::inc", $this->cartItems);
     $this->isShowing = "show";
+    $this->getTotal();
   }
   public function inc($item)
   {
     if ($item['id'] == $this->selectedId) return [...$item, 'amount' => ++$item['amount']];
     else return $item;
+  }
+
+  #[LiveAction]
+  public function decrement(#[LiveArg] int $id)
+  {
+    $this->selectedId = $id;
+    for ($i = 0; $i < count($this->cartItems); $i++) {
+      if ($this->cartItems[$i]['id'] == $this->selectedId) {
+        if ($this->cartItems[$i]['amount'] == 1) array_splice($this->cartItems, $i, 1);
+        else  $this->cartItems[$i]['amount'] = --$this->cartItems[$i]['amount'];
+      }
+    }
+    if ($this->cartItems) $this->isShowing = "show";
+    $this->getTotal();
+  }
+
+  public function getTotal()
+  {
+    $this->total = array_reduce($this->cartItems, fn ($total, $item) => $total += ($item['amount'] * $item['price']));
   }
 }

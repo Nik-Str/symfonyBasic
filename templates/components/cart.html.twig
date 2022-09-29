@@ -1,29 +1,37 @@
-<div class="offcanvas offcanvas-end {{ isShowing }}" tabindex="-1" data-bs-scroll="true" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" {{ attributes }}>
+<div class="offcanvas offcanvas-end {{ isShowing }}" tabindex="-1" data-bs-backdrop="false" data-bs-scroll="true" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" {{ attributes }}>
 	<div class="offcanvas-header">
 		<h5 id="offcanvasRightLabel">Cart</h5>
 		<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 	</div>
-	<div class="offcanvas-body">
-		{% if cartItems %}
-			{% for item in cartItems %}
-				<div class="d-flex cartItem">
-					<a href="/product/{{ item.id }}">
-						<img src="{{ item.image }}" alt="{{ item.title }}">
-					</a>
-					<div class="cartItemInfo">
-						<h3>{{ item.title }}</h3>
-						<h4>{{ item.brand }}</h4>
-						<div class="d-flex justify-content-between" {{ stimulus_controller('cart') }}>
-							<div class="d-flex ">
-								<i class="bi bi-dash-circle pe-2"></i>
-								{{ item.amount }}
-								<i class="bi bi-plus-circle ps-2" data-cart-id-param="{{item.id}}" data-action="click->live#action click->cart#increment" data-action-name="increment(id={{ item.id }})"></i>
+	<div class="offcanvas-body h-100">
+		<div class="d-flex flex-column justify-content-between h-100">
+			<div>
+				{% if cartItems %}
+					{% for item in cartItems %}
+						<div class="d-flex cartItem">
+							<a href="/product/{{ item.id }}">
+								<img src="{{ item.image }}" alt="{{ item.title }}">
+							</a>
+							<div class="cartItemInfo">
+								<h3>{{ item.title }}</h3>
+								<h4>{{ item.brand }}</h4>
+								<div class="d-flex justify-content-between" {{ stimulus_controller('cart') }}>
+									<div class="d-flex ">
+										<i class="bi bi-dash-circle pe-2" data-cart-id-param="{{item.id}}" data-action="click->live#action click->cart#decrement" data-action-name="decrement(id={{ item.id }})"></i>
+										{{ item.amount }}
+										<i class="bi bi-plus-circle ps-2" data-cart-id-param="{{item.id}}" data-action="click->live#action click->cart#increment" data-action-name="increment(id={{ item.id }})"></i>
+									</div>
+									<p class=" mb-0">{{ item.amount * item.price }}kr</p>
+								</div>
 							</div>
-							<p class=" mb-0">{{ item.amount * item.price }}kr</p>
 						</div>
-					</div>
-				</div>
-			{% endfor %}
-		{% endif %}
+					{% endfor %}
+				{% endif %}
+				<p class="text-end">Total: {{ total }}kr</p>
+			</div>
+			<div>
+
+				<button type="button" class="btn btn-dark w-100">Checkout</button>
+			</div>
+		</div>
 	</div>
-</div>

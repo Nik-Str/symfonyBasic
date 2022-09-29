@@ -25,6 +25,7 @@ class UpdateCartController extends AbstractController
       }
 
       if ($this->body['type'] === 'inc') $this->increment();
+      if ($this->body['type'] === 'dec') $this->decrement();
 
       $response = new JsonResponse();
       $expiration = time() + 3600 * 24;
@@ -46,6 +47,16 @@ class UpdateCartController extends AbstractController
     for ($i = 0; $i < count($this->cookie); $i++) {
       if ($this->cookie[$i]['id'] == $this->body['id']) {
         $this->cookie[$i]['amount'] = ++$this->cookie[$i]['amount'];
+      }
+    }
+  }
+
+  public function decrement()
+  {
+    for ($i = 0; $i < count($this->cookie); $i++) {
+      if ($this->cookie[$i]['id'] == $this->body['id']) {
+        if ($this->cookie[$i]['amount'] == 1) array_splice($this->cookie, $i, 1);
+        else  $this->cookie[$i]['amount'] = --$this->cookie[$i]['amount'];
       }
     }
   }
