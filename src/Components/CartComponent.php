@@ -22,16 +22,16 @@ class CartComponent
   public function __construct(ProductsRepository $productsRepository)
   {
     $this->productsRepository = $productsRepository;
-    $this->getCart();
-    $this->getTotal();
+    if (isset($_COOKIE['symfonyCart'])) {
+      $this->getCart();
+      $this->getTotal();
+    }
   }
 
   public function getCart()
   {
-    if (isset($_COOKIE['symfonyCart'])) {
-      $this->cookieCart = json_decode($_COOKIE['symfonyCart'], true);
-      $this->cartItems = array_map("self::getProduct", $this->cookieCart);
-    }
+    $this->cookieCart = json_decode($_COOKIE['symfonyCart'], true);
+    $this->cartItems = array_map("self::getProduct", $this->cookieCart);
   }
 
   public function getProduct($item)

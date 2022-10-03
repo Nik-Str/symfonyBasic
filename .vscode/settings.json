@@ -4,5 +4,7 @@
   "emmet.includeLanguages": {
     "twig": "html"
   },
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "editor.wordWrap": "off",
+  "html.format.wrapAttributes": "auto"
 }

@@ -51,7 +51,6 @@ class CheckoutController extends AbstractController
       $orderLink = $this->orderRepository->find($order->getId());
       $getProduct = fn (int $cartItem) => $this->productRepository->find($cartItem);
 
-
       //Create OrderDetails
       foreach ($cart as $item) {
         $orderDetails = new OrderDetails();
@@ -65,8 +64,9 @@ class CheckoutController extends AbstractController
       }
 
       $entityManager->flush();
-
       $response = new RedirectResponse($_ENV['BASE_URL'] . '/confirmation/' .  $order->getId());
+      $response->headers->clearCookie('symfonyCart');
+
       $response->send();
     } catch (\Throwable $err) {
       $response = new JsonResponse();

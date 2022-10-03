@@ -26,6 +26,7 @@ Encore
   .addEntry('styles/auth', './assets/styles/auth.scss')
   .addEntry('styles/products', './assets/styles/products.scss')
   .addEntry('styles/product', './assets/styles/product.scss')
+  .addEntry('styles/confirmation', './assets/styles/confirmation.scss')
 
   // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
   .enableStimulusBridge('./assets/controllers.json')

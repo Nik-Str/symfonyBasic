@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+	<link rel="stylesheet" href={{ asset('build/styles/confirmation.css') }}>
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="d-flex justify-content-center p-3 pt-5">
+			<div class="contentContainer">
+				<div>
+					<div class="text-center pb-5">
+						<h3>Order Confirmation</h3>
+						<p>An email has been sent to: {{ orderDetails.user }} with order details and confirmation. For more info about our
+							shipping and for tracking your order, se link below.
+						</p>
+					</div>
+					{% for item in orderDetails.products %}
+						<div class="d-flex cartItem">
+							<a href="/product/{{ item.id }}">
+								<img src="{{ item.image }}" alt="{{ item.title }}"/>
+							</a>
+							<div class="cartItemInfo">
+								<h3>
+									{{ item.title }}
+								</h3>
+								<h4>
+									{{ item.brand }}
+								</h4>
+								<div class="d-flex justify-content-between">
+									<p class="m-0 p-0">
+										{{ item.amount }}st
+									</p>
+									<p class="mb-0">
+										{{ item.amount * item.price }}kr
+									</p>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+					<div>
+						<p class="text-end">Total: {{ orderDetails.total }}kr</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -19,7 +19,7 @@ class Orders
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    #[ORM\OneToMany(mappedBy: 'order_id', targetEntity: OrderDetails::class)]
+    #[ORM\OneToMany(mappedBy: 'order', targetEntity: OrderDetails::class)]
     private Collection $orderDetails;
 
     public function __construct()
@@ -56,7 +56,7 @@ class Orders
     {
         if (!$this->orderDetails->contains($orderDetail)) {
             $this->orderDetails->add($orderDetail);
-            $orderDetail->setOrderId($this);
+            $orderDetail->setOrder($this);
         }
 
         return $this;
@@ -66,8 +66,8 @@ class Orders
     {
         if ($this->orderDetails->removeElement($orderDetail)) {
             // set the owning side to null (unless already changed)
-            if ($orderDetail->getOrderId() === $this) {
-                $orderDetail->setOrderId(null);
+            if ($orderDetail->getOrder() === $this) {
+                $orderDetail->setOrder(null);
             }
         }
 
